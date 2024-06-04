@@ -9,7 +9,7 @@ const dbDir = process.env.DB_PATH
 export default {
 	schema: "./app/db.server/schema.ts",
 	out: "./migrations",
-	driver: "better-sqlite",
+	dialect: "sqlite",
 	dbCredentials: {
 		url: path.join(dbDir, "database.db"),
 	},
