@@ -40,7 +40,7 @@ enum Intents {
 
 export const meta: MetaFunction = () => {
 	return [
-		{ title: title("Signup") },
+		{ title: title("Sign up") },
 		{ name: "description", content: "Welcome to Remix!" },
 	];
 };
@@ -159,7 +159,7 @@ export default function Signup() {
 
 				<Card className="mx-auto w-full max-w-screen-sm">
 					<CardHeader className="space-y-1">
-						<CardTitle>Signup</CardTitle>
+						<CardTitle>Sign up</CardTitle>
 						<CardDescription>
 							Enter your info below to create your account.
 						</CardDescription>
@@ -273,7 +273,7 @@ export default function Signup() {
 										<CheckCircledIcon className="ml-2 text-primary-foreground" />
 									</span>
 								) : (
-									"Signup"
+									"Sign up"
 								)}
 							</Button>
 
