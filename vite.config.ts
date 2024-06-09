@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 import envOnly from "vite-env-only";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default defineConfig(({ isSsrBuild }) => ({
 	ssr: {
 		resolve: {
