@@ -44,7 +44,7 @@ export function Header({
 				<div className="flex items-center space-x-4">
 					<Link className="flex items-center space-x-2" to="/">
 						<span className="text-lg font-bold">
-							Your Icon Here
+							Your Logo Here
 						</span>
 					</Link>
 				</div>

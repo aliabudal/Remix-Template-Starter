@@ -4,6 +4,7 @@ import { Faq } from "@/components/faq";
 import { Pricing } from "@/components/pricing";
 import { HowItWorks } from "@/components/how-it-works";
 import { UsedByClients } from "@/components/used-by-clients";
+import { Footer } from "@/components/footer";
 
 export const loader: LoaderFunction = async ({ context, request }) => {
 	const authenticator = getAuthenticator(context);
@@ -23,6 +24,7 @@ export default function Home() {
 			<HowItWorks />
 			<UsedByClients />
 			<Faq />
+			<Footer />
 		</>
 	);
 }
