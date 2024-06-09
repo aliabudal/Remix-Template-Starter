@@ -1,4 +1,10 @@
-import { ExitIcon, LaptopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import {
+	ExitIcon,
+	LaptopIcon,
+	MoonIcon,
+	SunIcon,
+	PersonIcon,
+} from "@radix-ui/react-icons";
 import { Form, Link } from "@remix-run/react";
 import * as React from "react";
 import { useHydrated } from "remix-utils/use-hydrated";
@@ -33,6 +39,7 @@ export function Header({
 	return (
 		<>
 			<Form id="logout-form" method="POST" action="/logout" />
+			<Form id="account-form" method="GET" action="/account" />
 			<header className="flex items-center justify-between px-4 py-2 md:py-4">
 				<div className="flex items-center space-x-4">
 					<Link className="flex items-center space-x-2" to="/">
@@ -95,6 +102,19 @@ export function Header({
 							</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
+					{isAuthenticated && (
+						<Button
+							form="account-form"
+							type="submit"
+							className="h-10 w-10 rounded-full border"
+							size="icon"
+							variant="ghost"
+							title="Profile"
+						>
+							<span className="sr-only">Profile</span>
+							<PersonIcon />
+						</Button>
+					)}
 					{isAuthenticated && (
 						<Button
 							form="logout-form"
