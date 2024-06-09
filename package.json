@@ -6,10 +6,9 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "dotenv -- node ./server.js",
-    "fix": "biome check . --apply",
     "generate:migration": "pnpm drizzle-kit generate:sqlite",
-    "lint": "biome check .",
-    "format": "prettier --write 'app/**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint --fix '**/*.{ts,tsx}' --ignore-pattern 'app/components/ui/**'",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc"
   },
@@ -49,7 +48,6 @@
     "zod-form-data": "2.0.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.5.3",
     "@remix-run/dev": "^2.9.2",
     "@tailwindcss/typography": "0.5.10",
     "@types/bcryptjs": "2.4.6",
