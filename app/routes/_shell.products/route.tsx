@@ -1,16 +1,16 @@
-import { getAuthenticator } from "@/lib/auth.server";
-import { LoaderFunction, redirect, json } from "@remix-run/node";
+import { getUser } from "@/lib/auth.server";
+import { redirect } from "@remix-run/node";
+import type { LoaderFunctionArgs } from "@remix-run/node";
 
-export const loader: LoaderFunction = async ({ context, request }) => {
-	const authenticator = getAuthenticator(context);
-	const user = await authenticator.isAuthenticated(request);
+export async function loader({ context, request }: LoaderFunctionArgs) {
+	const user = await getUser(context, request);
 
 	if (!user) {
 		return redirect("/");
 	}
 
-	return json({ user });
-};
+	return { user };
+}
 
 export default function ProductsPage() {
 	return (
