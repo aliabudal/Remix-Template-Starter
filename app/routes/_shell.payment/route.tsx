@@ -1,3 +1,4 @@
+import { CardsPaymentMethod } from "@/components/payment";
 import { getAuthenticator } from "@/lib/auth.server";
 import { LoaderFunction, redirect, json } from "@remix-run/node";
 
@@ -12,11 +13,10 @@ export const loader: LoaderFunction = async ({ context, request }) => {
 	return json({ user });
 };
 
-export default function ProductsPage() {
+export default function Payment() {
 	return (
-		<div>
-			<h1>Products</h1>
-			<ul></ul>
-		</div>
+		<>
+			<CardsPaymentMethod />
+		</>
 	);
 }
