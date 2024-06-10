@@ -68,7 +68,9 @@ export const Card = ({
 	return (
 		<div
 			className={cn(
-				"relative z-20 h-full w-full overflow-hidden rounded-2xl border border-transparent bg-black p-4 group-hover:border-slate-700 dark:border-white/[0.2]",
+				"relative z-20 h-full w-full overflow-hidden rounded-2xl border-2 p-4",
+				"border-[color:var(--theme-light-border,hsl(var(--zinc-300)))] dark:border-[color:var(--theme-dark-border,hsl(var(--zinc-700-dark)))]",
+				"group-hover:border-[color:var(--theme-light-border-hover,hsl(var(--zinc-400)))] dark:group-hover:border-[color:var(--theme-dark-border-hover,hsl(var(--zinc-600-dark)))]",
 				className
 			)}
 		>
@@ -88,7 +90,8 @@ export const CardTitle = ({
 	return (
 		<h4
 			className={cn(
-				"mt-4 font-bold tracking-wide text-zinc-100",
+				"mt-4 font-bold tracking-wide",
+				"text-[color:var(--theme-light,hsl(var(--zinc-500)))] dark:text-[color:var(--theme-dark,hsl(var(--zinc-100-dark)))]",
 				className
 			)}
 		>
@@ -106,7 +109,8 @@ export const CardDescription = ({
 	return (
 		<p
 			className={cn(
-				"mt-8 text-sm leading-relaxed tracking-wide text-zinc-400",
+				"mt-8 text-sm leading-relaxed tracking-wide",
+				"text-[color:var(--theme-light,hsl(var(--zinc-500)))] dark:text-[color:var(--theme-dark,hsl(var(--zinc-100-dark)))]",
 				className
 			)}
 		>

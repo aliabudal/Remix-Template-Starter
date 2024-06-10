@@ -1,3 +1,4 @@
+import { HomeIcon } from "@radix-ui/react-icons";
 /* eslint-disable jsx-a11y/anchor-is-valid */ // Remove this when you add the href values
 export const Footer = () => {
 	const currentYear = new Date().getFullYear();
@@ -10,9 +11,12 @@ export const Footer = () => {
 					<a
 						rel="noreferrer noopener"
 						href="/"
-						className="flex text-xl font-bold"
+						className="flex items-center text-xl font-bold"
 					>
-						Your Logo Here
+						<HomeIcon className="text-white-900 h-6 w-6 dark:text-white" />
+						<span className="text-white-900 ml-2 text-lg font-bold dark:text-white">
+							Remix Starter
+						</span>
 					</a>
 				</div>
 
