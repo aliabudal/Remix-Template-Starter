@@ -61,7 +61,7 @@ const pricingList: PricingProps[] = [
 		price: 40,
 		description:
 			"Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-		buttonText: "Contact US",
+		buttonText: "Contact Us",
 		benefitList: [
 			"10 Team member",
 			"8 GB Storage",
