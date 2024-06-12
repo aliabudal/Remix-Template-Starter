@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import { getUser } from "@/lib/auth.server";
 import { redirect } from "@remix-run/node";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
-import { useActionData, Form } from "@remix-run/react";
+import { useActionData, Form, Link } from "@remix-run/react";
 import { createProduct } from "@/lib/products.server";
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
@@ -158,6 +158,11 @@ export default function AddProductPage() {
 					{actionData.error}
 				</p>
 			)}
+			<div className="mt-4 text-center">
+				<Link to="/products" className="text-blue-500 hover:underline">
+					&larr; Back to Products
+				</Link>
+			</div>
 		</main>
 	);
 }
