@@ -17,6 +17,7 @@ CREATE TABLE `user` (
 	`email` text NOT NULL,
 	`full_name` text NOT NULL,
 	`display_name` text NOT NULL
+	`role` text NOT NULL DEFAULT 'Member'
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `user_email_unique` ON `user` (`email`);

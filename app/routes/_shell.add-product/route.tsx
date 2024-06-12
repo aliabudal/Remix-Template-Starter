@@ -14,21 +14,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getUser } from "@/lib/auth.server";
 import { redirect } from "@remix-run/node";
-import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
+import type { ActionFunctionArgs } from "@remix-run/node";
 import { useActionData, Link, Form } from "@remix-run/react";
 import { createProduct } from "@/lib/products.server";
 
-export async function loader({ context, request }: LoaderFunctionArgs) {
-	const user = await getUser(context, request);
-
-	if (!user) {
-		return redirect("/");
-	}
-
-	return { user };
-}
-
 export async function action({ request, context }: ActionFunctionArgs) {
+	const user = await getUser(context, request);
+	if (!user || user.role !== "Administrator") {
+		return {
+			error: "Unauthorized: Only administrators can create products (Security :P)",
+		};
+	}
 	const formData = await request.formData();
 	const name = formData.get("name") as string;
 	const description = formData.get("description") as string;

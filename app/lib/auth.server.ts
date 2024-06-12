@@ -7,6 +7,7 @@ import { type AuthorizedUser, loginFormSchema } from "@/lib/auth";
 import { getCookieSessionStorage } from "@/lib/session.server";
 import { getUserByLogin } from "@/lib/user.server";
 import { PublicError } from "./forms.server";
+import { UserRole } from "./enums";
 
 export function getAuthenticator(context: AppLoadContext) {
 	const authenticator = new Authenticator<AuthorizedUser>(
@@ -21,7 +22,7 @@ export function getAuthenticator(context: AppLoadContext) {
 			const user = await getUserByLogin(context, parsed.data);
 			if (!user) throw new PublicError("Invalid email or password", 401);
 
-			return { id: user.id };
+			return { id: user.id, role: user.role as UserRole };
 		}),
 		"form"
 	);

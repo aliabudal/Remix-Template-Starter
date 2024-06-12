@@ -1,7 +1,5 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { getUser } from "@/lib/auth.server";
-import { redirect } from "@remix-run/node";
 import { getAllProducts, getProductsCount } from "@/lib/products.server";
 import { cn, themeBorder } from "@/lib/styles";
 import {
@@ -16,12 +14,6 @@ import {
 import { PlusCircledIcon, Pencil2Icon, TrashIcon } from "@radix-ui/react-icons";
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
-	const user = await getUser(context, request);
-
-	if (!user) {
-		return redirect("/");
-	}
-
 	const url = new URL(request.url);
 	const page = parseInt(url.searchParams.get("page") || "1", 10);
 	const limit = 5;
@@ -29,7 +21,7 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
 	const products = await getAllProducts(context, page, limit);
 	const totalProducts = await getProductsCount(context);
 
-	return { user, products, page, limit, totalProducts };
+	return { products, page, limit, totalProducts };
 }
 
 export default function ProductsPage() {

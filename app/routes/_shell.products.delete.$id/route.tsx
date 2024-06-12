@@ -3,9 +3,10 @@ import {
 	LoaderFunctionArgs,
 	redirect,
 } from "@remix-run/node";
-import { Form, useLoaderData, Link } from "@remix-run/react";
+import { Form, useLoaderData, Link, useActionData } from "@remix-run/react";
 import { getProductById, deleteProduct } from "@/lib/products.server";
 import { themeBorder } from "@/lib/styles";
+import { getUser } from "@/lib/auth.server";
 
 export async function loader({ context, params, request }: LoaderFunctionArgs) {
 	const productId = params.id;
@@ -26,6 +27,12 @@ export async function loader({ context, params, request }: LoaderFunctionArgs) {
 }
 
 export async function action({ context, request, params }: ActionFunctionArgs) {
+	const user = await getUser(context, request);
+	if (!user || user.role !== "Administrator") {
+		return {
+			error: "Unauthorized: Only administrators can delete products (Security :P)",
+		};
+	}
 	const productId = params.id;
 	const url = new URL(request.url);
 	const page = url.searchParams.get("page") || "1";
@@ -45,6 +52,7 @@ export async function action({ context, request, params }: ActionFunctionArgs) {
 }
 
 export default function DeleteProductConfirmation() {
+	const actionData = useActionData<typeof action>();
 	const { product, page } = useLoaderData<typeof loader>();
 
 	return (
@@ -66,6 +74,9 @@ export default function DeleteProductConfirmation() {
 						${product.price.toFixed(2)}
 					</p>
 				</div>
+				{actionData?.error && (
+					<p className="mb-4 text-red-500">{actionData.error}</p>
+				)}
 				<Form method="post" className="flex justify-end">
 					<Link
 						to={`/products?page=${page}`}

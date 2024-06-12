@@ -1,6 +1,7 @@
 import type { LibSQLDatabase } from "drizzle-orm/libsql";
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 import { v4 as uuid } from "uuid";
+import { UserRole } from "@/lib/enums";
 
 const stringId = (name: string) =>
 	text(name)
@@ -21,6 +22,7 @@ export const user = sqliteTable("user", {
 	email: text("email").unique().notNull(),
 	fullName: text("full_name").notNull(),
 	displayName: text("display_name").notNull(),
+	role: text("role").default(UserRole.Member).notNull(),
 });
 
 export const product = sqliteTable("product", {
