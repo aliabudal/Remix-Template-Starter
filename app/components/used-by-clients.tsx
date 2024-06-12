@@ -1,5 +1,12 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
-import { FaAmazon, FaTwitter, FaFacebook, FaGoogle, FaStripe, FaMicrosoft, FaYoutube } from 'react-icons/fa';
+import {
+	FaAmazon,
+	FaTwitter,
+	FaFacebook,
+	FaGoogle,
+	FaMicrosoft,
+	FaYoutube,
+} from "react-icons/fa";
 
 export function UsedByClients() {
 	return (
@@ -28,42 +35,42 @@ export const projects = [
 		title: "Youtube",
 		description:
 			"A technology company focusing on video sharing, streaming and social media.",
-		link: "https://stripe.com",
-		image: <FaYoutube size="4em"/>
+		link: "https://youtube.com",
+		image: <FaYoutube size="4em" />,
 	},
 	{
 		title: "Twitter",
 		description:
 			"A technology company that focuses on building products that advance X's mission of bringing the world closer together.",
 		link: "https://x.com",
-		image: <FaTwitter size="4em"/>
+		image: <FaTwitter size="4em" />,
 	},
 	{
 		title: "Google",
 		description:
 			"A multinational technology company that specializes in Internet-related services and products.",
 		link: "https://google.com",
-		image: <FaGoogle size="4em"/>
+		image: <FaGoogle size="4em" />,
 	},
 	{
 		title: "Meta",
 		description:
 			"A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
 		link: "https://meta.com",
-		image: <FaFacebook size="4em"/>
+		image: <FaFacebook size="4em" />,
 	},
 	{
 		title: "Amazon",
 		description:
 			"A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
 		link: "https://amazon.com",
-		image: <FaAmazon size="4em"/>
+		image: <FaAmazon size="4em" />,
 	},
 	{
 		title: "Microsoft",
 		description:
 			"A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
 		link: "https://microsoft.com",
-		image: <FaMicrosoft size="4em"/>
+		image: <FaMicrosoft size="4em" />,
 	},
 ];

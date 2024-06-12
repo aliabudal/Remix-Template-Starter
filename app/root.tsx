@@ -66,7 +66,7 @@ export function ErrorBoundary() {
 
 	return (
 		<App>
-			<div className="prose container py-8">
+			<div className="container prose py-8">
 				<h1>{status}</h1>
 				<p>{message}</p>
 			</div>
