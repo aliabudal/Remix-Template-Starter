@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "a0a1c5ca-f1a0-4850-b7ac-050012f39962",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "0c98d3f8-9361-4a9a-b50a-14e7dd63699c",
+  "prevId": "a0a1c5ca-f1a0-4850-b7ac-050012f39962",
   "tables": {
     "password": {
       "name": "password",
@@ -115,6 +115,14 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Member'"
         }
       },
       "indexes": {

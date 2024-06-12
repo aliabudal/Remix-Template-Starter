@@ -1,8 +1,10 @@
 import { z } from "zod";
 import { zfd } from "zod-form-data";
+import { UserRole } from "@/lib/enums";
 
 export type AuthorizedUser = {
 	id: string;
+	role: UserRole;
 };
 
 export const loginFormSchema = zfd.formData({

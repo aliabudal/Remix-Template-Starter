@@ -1,3 +1,4 @@
+import { redirect } from "@remix-run/node";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import {
 	Outlet,
@@ -11,7 +12,14 @@ import { getUser } from "@/lib/auth.server";
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
 	const user = await getUser(context, request);
-	return { isAuthenticated: !!user };
+	const isAuthenticated = !!user;
+	const url = new URL(request.url);
+
+	if (!isAuthenticated && url.pathname !== "/") {
+		return redirect("/");
+	}
+
+	return { isAuthenticated };
 }
 
 function Layout({ children }: { children: React.ReactNode }) {

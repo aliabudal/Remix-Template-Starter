@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { and, eq } from "drizzle-orm";
 
 import { password, user } from "@/db.server/schema";
+import { UserRole } from "@/lib/enums";
 
 export async function createUser(
 	{ DB }: AppLoadContext,
@@ -11,13 +12,20 @@ export async function createUser(
 		email,
 		fullName,
 		password: unhashedPassword,
+		role = UserRole.Member,
 	}: {
 		displayName: string;
 		email: string;
 		fullName: string;
 		password: string;
+		role?: UserRole;
 	}
 ) {
+	if (role === UserRole.Administrator) {
+		throw new Error(
+			"Unauthorized: Only direct database access can assign the Administrator role."
+		);
+	}
 	try {
 		const createdUser = (
 			await DB.insert(user)
@@ -25,12 +33,14 @@ export async function createUser(
 					displayName,
 					email,
 					fullName,
+					role,
 				})
 				.returning({
 					id: user.id,
 					displayName: user.displayName,
 					email: user.email,
 					fullName: user.fullName,
+					role: user.role,
 				})
 		)[0];
 		if (!createdUser) return null;
@@ -81,6 +91,7 @@ export async function getUserById({ DB }: AppLoadContext, userId: string) {
 				displayName: true,
 				email: true,
 				fullName: true,
+				role: true,
 			},
 			where: eq(user.id, userId),
 		})) ?? null
@@ -97,6 +108,7 @@ export async function getUserByLogin(
 			displayName: true,
 			email: true,
 			fullName: true,
+			role: true,
 		},
 		where: eq(user.email, email),
 	});
@@ -122,14 +134,21 @@ export async function getUserByLogin(
 export async function updateUser(
 	{ DB }: AppLoadContext,
 	userId: string,
+	newRole: UserRole,
 	{ displayName, fullName }: { displayName: string; fullName: string }
 ) {
+	if (newRole === UserRole.Administrator) {
+		throw new Error(
+			"Unauthorized: Only direct database access can assign the Administrator role."
+		);
+	}
 	return (
 		(
 			await DB.update(user)
 				.set({
 					displayName,
 					fullName,
+					role: newRole,
 				})
 				.where(eq(user.id, userId))
 				.returning({
@@ -137,6 +156,7 @@ export async function updateUser(
 					displayName: user.displayName,
 					email: user.email,
 					fullName: user.fullName,
+					role: user.role,
 				})
 		)[0] ?? null
 	);

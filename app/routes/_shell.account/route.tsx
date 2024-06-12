@@ -1,4 +1,3 @@
-import { getFormProps, getInputProps } from "@conform-to/react";
 import { ArchiveIcon } from "@radix-ui/react-icons";
 import type {
 	ActionFunctionArgs,
@@ -28,7 +27,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { requireUser } from "@/lib/auth.server";
 import { getUserById, updateUser } from "@/lib/user.server";
-import { updateAccountFormSchema, useUpdateAccountForm } from "./form";
+import { updateAccountFormSchema } from "./form";
+import { useState } from "react";
 
 enum Intents {
 	UpdateAccount = "updateAccount",
@@ -59,7 +59,7 @@ export async function action({ context, request }: ActionFunctionArgs) {
 			Intents.UpdateAccount,
 			updateAccountFormSchema,
 			async (data) => {
-				return await updateUser(context, user.id, data);
+				return await updateUser(context, user.id, user.role, data);
 			}
 		)
 		.run();
@@ -78,13 +78,12 @@ export default function Account() {
 
 	const formDisabled = saving;
 
-	const [accountForm, accountFields] = useUpdateAccountForm(updateAccount, {
-		disabled: formDisabled,
-	});
+	const [displayName, setDisplayName] = useState(account?.displayName || "");
+	const [fullName, setFullName] = useState(account?.fullName || "");
 
 	return (
 		<main className="container py-8 md:py-16 lg:py-32">
-			<Form {...getFormProps(accountForm)} method="POST" replace>
+			<Form method="POST" replace>
 				<input
 					type="hidden"
 					name="intent"
@@ -98,42 +97,28 @@ export default function Account() {
 					</CardHeader>
 					<CardContent className="space-y-4">
 						<div className="space-y-2">
-							<Label htmlFor={accountFields.displayName.id}>
-								Display Name
-							</Label>
+							<Label htmlFor="displayName">Display Name</Label>
 							<Input
-								{...getInputProps(accountFields.displayName, {
-									type: "text",
-								})}
+								type="text"
+								id="displayName"
+								name="displayName"
 								placeholder="Anonymous"
 								required
-								defaultValue={account?.displayName}
+								value={displayName}
+								onChange={(e) => setDisplayName(e.target.value)}
 							/>
-							<div
-								id={accountFields.displayName.descriptionId}
-								className="text-sm text-destructive"
-							>
-								{accountFields.displayName.errors}
-							</div>
 						</div>
 						<div className="space-y-2">
-							<Label htmlFor={accountFields.fullName.id}>
-								Full Name
-							</Label>
+							<Label htmlFor="fullName">Full Name</Label>
 							<Input
-								{...getInputProps(accountFields.fullName, {
-									type: "text",
-								})}
+								type="text"
+								id="fullName"
+								name="fullName"
 								placeholder="John Doe"
 								required
-								defaultValue={account?.fullName}
+								value={fullName}
+								onChange={(e) => setFullName(e.target.value)}
 							/>
-							<div
-								id={accountFields.fullName.descriptionId}
-								className="text-sm text-destructive"
-							>
-								{accountFields.fullName.errors}
-							</div>
 						</div>
 						<div className="space-y-2">
 							<Label htmlFor="account-form-email">Email</Label>
@@ -160,11 +145,6 @@ export default function Account() {
 									"Save"
 								)}
 							</Button>
-							{accountForm.dirty && (
-								<div className="text-sm text-muted-foreground">
-									Unsaved changes
-								</div>
-							)}
 						</div>
 					</CardFooter>
 				</Card>
