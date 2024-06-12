@@ -1,4 +1,5 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { FaAmazon, FaTwitter, FaFacebook, FaGoogle, FaStripe, FaMicrosoft, FaYoutube } from 'react-icons/fa';
 
 export function UsedByClients() {
 	return (
@@ -24,39 +25,45 @@ export function UsedByClients() {
 }
 export const projects = [
 	{
-		title: "Stripe",
+		title: "Youtube",
 		description:
-			"A technology company that builds economic infrastructure for the internet.",
+			"A technology company focusing on video sharing, streaming and social media.",
 		link: "https://stripe.com",
+		image: <FaYoutube size="4em"/>
 	},
 	{
-		title: "Netflix",
+		title: "Twitter",
 		description:
-			"A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
-		link: "https://netflix.com",
+			"A technology company that focuses on building products that advance X's mission of bringing the world closer together.",
+		link: "https://x.com",
+		image: <FaTwitter size="4em"/>
 	},
 	{
 		title: "Google",
 		description:
 			"A multinational technology company that specializes in Internet-related services and products.",
 		link: "https://google.com",
+		image: <FaGoogle size="4em"/>
 	},
 	{
 		title: "Meta",
 		description:
 			"A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
 		link: "https://meta.com",
+		image: <FaFacebook size="4em"/>
 	},
 	{
 		title: "Amazon",
 		description:
 			"A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
 		link: "https://amazon.com",
+		image: <FaAmazon size="4em"/>
 	},
 	{
 		title: "Microsoft",
 		description:
 			"A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
 		link: "https://microsoft.com",
+		image: <FaMicrosoft size="4em"/>
 	},
 ];

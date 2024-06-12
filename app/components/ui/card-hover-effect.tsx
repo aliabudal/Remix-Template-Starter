@@ -11,6 +11,7 @@ export const HoverEffect = ({
 		title: string;
 		description: string;
 		link: string;
+		image?: React.ReactNode;
 	}[];
 	className?: string;
 }) => {
@@ -49,6 +50,11 @@ export const HoverEffect = ({
 						)}
 					</AnimatePresence>
 					<Card>
+						{item.image && (
+							<div className="flex justify-center">
+								{item.image}
+							</div>
+						)}
 						<CardTitle>{item.title}</CardTitle>
 						<CardDescription>{item.description}</CardDescription>
 					</Card>

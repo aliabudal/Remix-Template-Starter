@@ -42,7 +42,7 @@ export function Header({
 		<>
 			<Form id="logout-form" method="POST" action="/logout" />
 			<Form id="account-form" method="GET" action="/account" />
-			<header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-10 flex items-center justify-between border-b px-4 py-2 backdrop-blur md:py-4">
+			<header className="sticky top-0 z-10 flex items-center justify-between border-b border-border/40 bg-background/95 px-4 py-2 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:py-4">
 				<div className="flex items-center space-x-4">
 					<Link className="flex items-center space-x-2" to="/">
 						<span className="flex items-center">
