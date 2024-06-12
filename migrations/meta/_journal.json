@@ -1,10 +1,10 @@
 {
-  "version": "5",
+  "version": "6",
   "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
-      "version": "5",
+      "version": "6",
       "when": 1708375048172,
       "tag": "0000_initial_schema",
       "breakpoints": true
