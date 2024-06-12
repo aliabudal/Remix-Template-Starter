@@ -5,6 +5,7 @@ import { Faq } from "@/components/faq";
 import { Pricing } from "@/components/pricing";
 import { HowItWorks } from "@/components/how-it-works";
 import { UsedByClients } from "@/components/used-by-clients";
+import { HeroSection } from "@/components/hero-section/hero-section";
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
 	const user = await getUser(context, request);
@@ -19,9 +20,10 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
 export default function Home() {
 	return (
 		<>
-			<Pricing />
+			<HeroSection />
 			<HowItWorks />
 			<UsedByClients />
+			<Pricing />
 			<Faq />
 		</>
 	);
