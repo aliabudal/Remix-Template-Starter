@@ -13,10 +13,10 @@ CREATE TABLE `user` (
 );
 --> statement-breakpoint
 CREATE TABLE `product` (
-    `id` text PRIMARY KEY NOT NULL,
-    `name` text NOT NULL,
-    `description` text NOT NULL,
-    `price` integer NOT NULL
+	`id` text PRIMARY KEY NOT NULL,
+	`name` text NOT NULL,
+	`description` text NOT NULL,
+	`price` integer NOT NULL
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `user_email_unique` ON `user` (`email`);

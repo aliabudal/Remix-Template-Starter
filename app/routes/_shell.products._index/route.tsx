@@ -54,7 +54,7 @@ export default function ProductsPage() {
 				);
 			}
 		} else {
-			const ellipsisThreshold = 3;
+			const ellipsisThreshold = 2;
 			const showEllipsisLeft = page > ellipsisThreshold + 1;
 			const showEllipsisRight = page < totalPages - ellipsisThreshold;
 
