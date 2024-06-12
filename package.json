@@ -9,6 +9,7 @@
     "generate:migration": "pnpm drizzle-kit generate:sqlite",
     "lint": "eslint --fix '**/*.{ts,tsx}' --ignore-pattern 'app/components/ui/**'",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "format-check": "prettier --check '**/*.{js,jsx,ts,tsx}'",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc"
   },
