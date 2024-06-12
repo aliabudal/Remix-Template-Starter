@@ -20,9 +20,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: |
-          cd ui
-          npm ci
+        run: npm ci
 
       - name: Run Eslint
         run: npm run lint
