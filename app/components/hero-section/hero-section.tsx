@@ -27,7 +27,7 @@ export const HeroSection: FC = () => {
 							<CopyPackageInput value="npx create-remix@latest --template aliabudal/Remix-Template-Starter" />
 							<div className="flex justify-center">
 								<Link
-									to="https://github.com/"
+									to="https://github.com/aliabudal/Remix-Template-Starter"
 									className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
 								>
 									Get started{" "}
