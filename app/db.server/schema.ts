@@ -1,4 +1,4 @@
-import type { BaseSQLiteDatabase } from "drizzle-orm/sqlite-core";
+import type { LibSQLDatabase } from "drizzle-orm/libsql";
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 import { v4 as uuid } from "uuid";
 
@@ -38,4 +38,4 @@ const schema = {
 
 export default schema;
 
-export type DB = BaseSQLiteDatabase<"async" | "sync", unknown, typeof schema>;
+export type DB = LibSQLDatabase<typeof schema>;

@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { Form, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -81,7 +81,7 @@ export default function AddProductPage() {
 
 	return (
 		<main className="container py-8 md:py-16 lg:py-32">
-			<form method="post" {...form}>
+			<Form method="post" {...form}>
 				<Card className="mx-auto w-full max-w-screen-sm">
 					<CardHeader className="space-y-1">
 						<CardTitle>Add Product</CardTitle>
@@ -152,7 +152,7 @@ export default function AddProductPage() {
 						</div>
 					</CardFooter>
 				</Card>
-			</form>
+			</Form>
 			{actionData && "error" in actionData && (
 				<p className="mt-4 text-center text-sm text-destructive">
 					{actionData.error}
