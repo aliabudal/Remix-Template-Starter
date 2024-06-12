@@ -1,4 +1,4 @@
-name: Check for linting and formatting errors
+name: Check for linting and formatting errors and deploy on push
 
 on:
   pull_request:
@@ -27,3 +27,20 @@ jobs:
 
       - name: Run Prettier
         run: npm run format-check
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly.io
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: flyctl deploy --remote-only
