@@ -2,7 +2,7 @@ import "dotenv/config";
 import { createRequestHandler } from "@remix-run/express";
 import { installGlobals } from "@remix-run/node";
 import compression from "compression";
-import { drizzle } from "drizzle-orm/libsql"
+import { drizzle } from "drizzle-orm/libsql";
 import { migrate } from "drizzle-orm/libsql/migrator";
 import express from "express";
 import morgan from "morgan";
