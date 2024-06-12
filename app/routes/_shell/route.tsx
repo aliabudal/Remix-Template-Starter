@@ -14,11 +14,11 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
 	const user = await getUser(context, request);
 	const isAuthenticated = !!user;
 	const url = new URL(request.url);
-  
+
 	if (!isAuthenticated && url.pathname !== "/") {
 		return redirect("/");
 	}
-  
+
 	return { isAuthenticated };
 }
 
