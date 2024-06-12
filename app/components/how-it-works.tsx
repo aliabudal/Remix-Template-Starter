@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { MedalIcon, MapIcon, PlaneIcon, GiftIcon } from "./icons";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MedalIcon, MapIcon, PlaneIcon, GiftIcon } from "@/components/icons";
 
 interface FeatureProps {
 	icon: JSX.Element;

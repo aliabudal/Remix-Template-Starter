@@ -14,7 +14,8 @@ import {
 	ThemeSwitcherScript,
 } from "@/components/theme-switcher";
 
-import "./globals.css";
+import "@/globals.css";
+import { Footer } from "@/components/footer";
 
 function App({ children }: { children: React.ReactNode }) {
 	return (
@@ -43,6 +44,7 @@ export default function Root() {
 	return (
 		<App>
 			<Outlet />
+			<Footer />
 		</App>
 	);
 }

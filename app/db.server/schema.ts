@@ -1,5 +1,5 @@
 import type { BaseSQLiteDatabase } from "drizzle-orm/sqlite-core";
-import { sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 import { v4 as uuid } from "uuid";
 
 const stringId = (name: string) =>
@@ -23,9 +23,17 @@ export const user = sqliteTable("user", {
 	displayName: text("display_name").notNull(),
 });
 
+export const product = sqliteTable("product", {
+	id: stringId("id"),
+	name: text("name").notNull(),
+	description: text("description").notNull(),
+	price: integer("price").notNull(),
+});
+
 const schema = {
 	password,
 	user,
+	product,
 };
 
 export default schema;

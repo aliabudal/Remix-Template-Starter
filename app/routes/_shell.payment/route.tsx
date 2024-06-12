@@ -1,10 +1,7 @@
 import { getUser } from "@/lib/auth.server";
 import { redirect } from "@remix-run/node";
 import type { LoaderFunctionArgs } from "@remix-run/node";
-import { Faq } from "@/components/faq";
-import { Pricing } from "@/components/pricing";
-import { HowItWorks } from "@/components/how-it-works";
-import { UsedByClients } from "@/components/used-by-clients";
+import { CardsPaymentMethod } from "@/components/payment";
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
 	const user = await getUser(context, request);
@@ -16,13 +13,10 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
 	return { user };
 }
 
-export default function Home() {
+export default function Payment() {
 	return (
 		<>
-			<Pricing />
-			<HowItWorks />
-			<UsedByClients />
-			<Faq />
+			<CardsPaymentMethod />
 		</>
 	);
 }

@@ -4,6 +4,8 @@ import {
 	MoonIcon,
 	SunIcon,
 	PersonIcon,
+	BackpackIcon,
+	HomeIcon,
 } from "@radix-ui/react-icons";
 import { Form, Link } from "@remix-run/react";
 import * as React from "react";
@@ -40,11 +42,14 @@ export function Header({
 		<>
 			<Form id="logout-form" method="POST" action="/logout" />
 			<Form id="account-form" method="GET" action="/account" />
-			<header className="flex items-center justify-between px-4 py-2 md:py-4">
+			<header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-10 flex items-center justify-between border-b px-4 py-2 backdrop-blur md:py-4">
 				<div className="flex items-center space-x-4">
 					<Link className="flex items-center space-x-2" to="/">
-						<span className="text-lg font-bold">
-							Your Logo Here
+						<span className="flex items-center">
+							<HomeIcon className="text-white-900 h-6 w-6 dark:text-white" />
+							<span className="text-white-900 ml-2 text-lg font-bold dark:text-white">
+								Remix Starter
+							</span>
 						</span>
 					</Link>
 				</div>
@@ -102,6 +107,19 @@ export function Header({
 							</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
+					{isAuthenticated && (
+						<Link to="/products">
+							<Button
+								className="h-10 w-10 rounded-full border"
+								size="icon"
+								variant="ghost"
+								title="Products"
+							>
+								<span className="sr-only">Products</span>
+								<BackpackIcon />
+							</Button>
+						</Link>
+					)}
 					{isAuthenticated && (
 						<Button
 							form="account-form"

@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,9 +27,9 @@ interface PricingProps {
 
 const pricingList: PricingProps[] = [
 	{
-		title: "Free",
+		title: "Starter",
 		popular: 0,
-		price: 0,
+		price: 10,
 		description:
 			"Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
 		buttonText: "Get Started",
@@ -43,10 +44,10 @@ const pricingList: PricingProps[] = [
 	{
 		title: "Premium",
 		popular: 1,
-		price: 5,
+		price: 20,
 		description:
 			"Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-		buttonText: "Start Free Trial",
+		buttonText: "Get Started",
 		benefitList: [
 			"4 Team member",
 			"4 GB Storage",
@@ -58,10 +59,10 @@ const pricingList: PricingProps[] = [
 	{
 		title: "Enterprise",
 		popular: 0,
-		price: 40,
+		price: 100,
 		description:
 			"Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-		buttonText: "Contact US",
+		buttonText: "Get Started",
 		benefitList: [
 			"10 Team member",
 			"8 GB Storage",
@@ -124,9 +125,11 @@ export const Pricing = () => {
 						</CardHeader>
 
 						<CardContent>
-							<Button className="w-full">
-								{pricing.buttonText}
-							</Button>
+							<Link to="/payment" className="block w-full">
+								<Button className="w-full">
+									{pricing.buttonText}
+								</Button>
+							</Link>
 						</CardContent>
 
 						<hr className="m-auto mb-4 w-4/5" />
