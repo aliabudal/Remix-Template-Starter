@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import { getUser } from "@/lib/auth.server";
 import { redirect } from "@remix-run/node";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
-import { useActionData, Link } from "@remix-run/react";
+import { useActionData, Link, Form } from "@remix-run/react";
 import { createProduct } from "@/lib/products.server";
 
 export async function loader({ context, request }: LoaderFunctionArgs) {

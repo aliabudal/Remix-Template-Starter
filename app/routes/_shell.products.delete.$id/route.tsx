@@ -7,8 +7,10 @@ import { Form, useLoaderData, Link } from "@remix-run/react";
 import { getProductById, deleteProduct } from "@/lib/products.server";
 import { themeBorder } from "@/lib/styles";
 
-export async function loader({ context, params }: LoaderFunctionArgs) {
+export async function loader({ context, params, request }: LoaderFunctionArgs) {
 	const productId = params.id;
+	const url = new URL(request.url);
+	const page = url.searchParams.get("page") || "1";
 
 	if (!productId) {
 		throw new Response("Product ID not provided", { status: 400 });
@@ -20,11 +22,13 @@ export async function loader({ context, params }: LoaderFunctionArgs) {
 		throw new Response("Product not found", { status: 404 });
 	}
 
-	return product;
+	return { product, page };
 }
 
 export async function action({ context, request, params }: ActionFunctionArgs) {
 	const productId = params.id;
+	const url = new URL(request.url);
+	const page = url.searchParams.get("page") || "1";
 
 	if (!productId) {
 		throw new Response("Product ID not provided", { status: 400 });
@@ -37,11 +41,11 @@ export async function action({ context, request, params }: ActionFunctionArgs) {
 		await deleteProduct(context, productId);
 	}
 
-	return redirect("/products");
+	return redirect(`/products?page=${page}`);
 }
 
 export default function DeleteProductConfirmation() {
-	const product = useLoaderData<typeof loader>();
+	const { product, page } = useLoaderData<typeof loader>();
 
 	return (
 		<div className="mx-auto mt-8 max-w-md">
@@ -63,14 +67,12 @@ export default function DeleteProductConfirmation() {
 					</p>
 				</div>
 				<Form method="post" className="flex justify-end">
-					<button
-						type="submit"
-						name="confirmation"
-						value="no"
+					<Link
+						to={`/products?page=${page}`}
 						className="mr-2 rounded-lg bg-gray-200 px-4 py-2 text-gray-700"
 					>
 						Cancel
-					</button>
+					</Link>
 					<button
 						type="submit"
 						name="confirmation"
@@ -82,7 +84,10 @@ export default function DeleteProductConfirmation() {
 				</Form>
 			</div>
 			<div className="mt-4 text-center">
-				<Link to="/products" className="text-blue-500 hover:underline">
+				<Link
+					to={`/products?page=${page}`}
+					className="text-blue-500 hover:underline"
+				>
 					&larr; Back to Products
 				</Link>
 			</div>

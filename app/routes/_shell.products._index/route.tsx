@@ -137,7 +137,7 @@ export default function ProductsPage() {
 							/>
 							<div className="absolute inset-0 flex bg-black bg-opacity-50 opacity-0 transition duration-300 hover:opacity-100">
 								<Link
-									to={`/products/edit/${product.id}`}
+									to={`/products/edit/${product.id}?page=${page}`}
 									className="group relative flex w-1/2 items-center justify-center border-r border-white"
 								>
 									<Pencil2Icon className="h-12 w-12 text-white" />
@@ -146,7 +146,7 @@ export default function ProductsPage() {
 									</span>
 								</Link>
 								<Link
-									to={`/products/delete/${product.id}`}
+									to={`/products/delete/${product.id}?page=${page}`}
 									className="group relative flex w-1/2 items-center justify-center"
 								>
 									<TrashIcon className="h-12 w-12 text-white" />
