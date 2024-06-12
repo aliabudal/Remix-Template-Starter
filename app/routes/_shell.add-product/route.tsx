@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import { getUser } from "@/lib/auth.server";
 import { redirect } from "@remix-run/node";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
-import { useActionData, Form, Link } from "@remix-run/react";
+import { useActionData, Link } from "@remix-run/react";
 import { createProduct } from "@/lib/products.server";
 
 export async function loader({ context, request }: LoaderFunctionArgs) {
@@ -81,7 +81,7 @@ export default function AddProductPage() {
 
 	return (
 		<main className="container py-8 md:py-16 lg:py-32">
-			<Form method="post" {...form}>
+			<form method="post" {...form}>
 				<Card className="mx-auto w-full max-w-screen-sm">
 					<CardHeader className="space-y-1">
 						<CardTitle>Add Product</CardTitle>
@@ -152,7 +152,7 @@ export default function AddProductPage() {
 						</div>
 					</CardFooter>
 				</Card>
-			</Form>
+			</form>
 			{actionData && "error" in actionData && (
 				<p className="mt-4 text-center text-sm text-destructive">
 					{actionData.error}

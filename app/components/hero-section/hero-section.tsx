@@ -9,16 +9,16 @@ export const HeroSection: FC = () => {
 			<div className="flex flex-col gap-8">
 				<div className="grid gap-8">
 					<div className="flex flex-col items-center justify-center gap-4 text-center xl:max-w-[676px]">
-						<h1 className="max-w-3xl text-4xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-5xl xl:text-6xl">
+						<h1 className="max-w-3xl text-4xl font-extrabold leading-none text-blue-500 dark:text-blue-700 lg:text-5xl xl:text-6xl">
 							<span className="block">
 								Build modern web applications with
 							</span>
-							<span className="mt-2 block text-cyan-700 dark:text-cyan-700">
+							<span className="mt-2 block text-primary">
 								Remix Template Starter
 							</span>
 						</h1>
-						<p className="max-w-3xl text-lg leading-normal text-gray-500 dark:text-gray-400 lg:text-xl">
-							This template is a open-source project built mainly
+						<p className="max-w-3xl text-lg leading-normal text-gray-700 dark:text-gray-400 lg:text-xl">
+							This template is an open-source project built mainly
 							on top of Remix, TypeScript, Tailwind CSS, and Vite.
 							It&apos;s a great starting point for building modern
 							web applications.
