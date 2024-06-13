@@ -65,25 +65,18 @@ const PricingCard = ({
 	features,
 	actionLabel,
 	popular,
-	exclusive,
 }: PricingCardProps) => (
 	<Card
 		className={cn(
-			`flex w-72 flex-col justify-between py-1 ${popular ? "border-rose-400" : "border-zinc-700"} mx-auto sm:mx-0`,
-			{
-				"animate-background-shine bg-white bg-[length:200%_100%] transition-colors dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)]":
-					exclusive,
-			}
+			`flex w-72 flex-col justify-between py-1 ${popular ? "border-rose-400" : "border-zinc-700"} mx-auto sm:mx-0`
 		)}
 	>
 		<div>
 			<CardHeader className="pb-8 pt-4">
 				{isYearly && yearlyPrice && monthlyPrice ? (
 					<div className="flex justify-between">
-						<CardTitle className="text-lg text-zinc-700 dark:text-zinc-300">
-							{title}
-						</CardTitle>
-						<div
+						<CardTitle className="text-lg">{title}</CardTitle>
+						{/* <div
 							className={cn(
 								"h-fit rounded-xl bg-zinc-200 px-2.5 py-1 text-sm text-black dark:bg-zinc-800 dark:text-white",
 								{
@@ -93,12 +86,10 @@ const PricingCard = ({
 							)}
 						>
 							Save ${monthlyPrice * 12 - yearlyPrice}
-						</div>
+						</div> */}
 					</div>
 				) : (
-					<CardTitle className="text-lg text-zinc-700 dark:text-zinc-300">
-						{title}
-					</CardTitle>
+					<CardTitle className="text-lg">{title}</CardTitle>
 				)}
 				<div className="flex gap-0.5">
 					<h3 className="text-3xl font-bold">
@@ -128,8 +119,8 @@ const PricingCard = ({
 		</div>
 		<CardFooter className="mt-2">
 			<Link to="/payment">
-				<Button className="relative inline-flex w-full items-center justify-center rounded-md bg-black px-6 font-medium text-white transition-colors  focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 dark:bg-white dark:text-black">
-					<div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-[#c7d2fe] to-[#8678f9] opacity-75 blur" />
+				<Button className="relative inline-flex w-full items-center justify-center rounded-md  px-6 font-medium transition-colors  focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 ">
+					<div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b opacity-75 blur" />
 					{actionLabel}
 				</Button>
 			</Link>
@@ -140,9 +131,7 @@ const PricingCard = ({
 const CheckItem = ({ text }: { text: string }) => (
 	<div className="flex gap-2">
 		<CheckCircle2 size={18} className="my-auto text-green-400" />
-		<p className="pt-0.5 text-sm text-zinc-700 dark:text-zinc-300">
-			{text}
-		</p>
+		<p className="pt-0.5 text-sm">{text}</p>
 	</div>
 );
 

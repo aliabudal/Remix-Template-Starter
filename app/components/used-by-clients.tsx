@@ -15,14 +15,14 @@ export function UsedByClients() {
 			className="container py-24 text-center sm:py-32"
 		>
 			<h2 className="text-3xl font-bold md:text-4xl ">
-				Used by{" "}
+				Popular{" "}
 				<span className="bg-gradient-to-b from-blue-500 to-blue-700 bg-clip-text text-transparent">
-					clients{" "}
+					companies{" "}
 				</span>
 				like the following
 			</h2>
 			<p className="mx-auto mb-8 mt-4 text-xl text-muted-foreground md:w-3/4">
-				Those are some of the clients that use our platform.
+				A list of popular companies to showcase the hover effect.
 			</p>
 			<div className="mx-auto max-w-5xl px-8">
 				<HoverEffect items={projects} />
