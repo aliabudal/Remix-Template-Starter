@@ -148,7 +148,7 @@ Now your project should be up and running, and you can access it in your browser
 
 # Features
 
-The Remix Template Starter comes with a set of pre-built [components](#components) and features to help you quickly develop your application. It also comes with [route protection](#protected-routes) via a parent route that acts as a wrapper around the other routes, ensuring that no unauthorized access is allowed to those routes. Linting and formatting with [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/), hosting and auto-deployment with [Fly.io](https://fly.io/) and [GitHub](https://github.com/), refer to this [section](#nice-to-have).
+The Remix Template Starter comes with a set of pre-built [components](#components) and features to help you quickly develop your application. It also comes with [route protection](#protected-routes) via a parent route that acts as a wrapper around the other routes, ensuring that no unauthorized access is allowed to those routes. Linting and formatting with [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/), hosting and auto-deployment with [Fly.io](https://fly.io/) and [GitHub](https://github.com/), refer to this [section](#nice-to-have-optional).
 
 ## Components
 
@@ -227,7 +227,9 @@ The workflow consists of two jobs:
 
 1. build: Runs on every pull request and push to the master branch. It checks out the code, sets up Node.js, installs dependencies, and runs ESLint and Prettier to check for linting and formatting errors.
 
-2. deploy: Runs only on pushes to the master branch, after the build job has completed successfully. It checks out the code, installs the Flyctl CLI, and deploys the application to Fly.io using the provided FLY_API_TOKEN secret. If you don't want the linting and formatting checks to run on pull requests, you can remove the build job from the workflow configuration file.
+2. deploy: Runs only on pushes to the master branch, after the build job has completed successfully. It checks out the code, installs the Flyctl CLI, and deploys the application to Fly.io using the provided FLY_API_TOKEN secret. 
+
+If you want to remove either of those jobs, you can remove the job from the workflow configuration file at `.github/workflows/workflows.yaml`
 
 **Important**: Make sure to set up the [FLY_API_TOKEN](https://fly.io/docs/reference/deploy-tokens/) secret in your GitHub repository's settings to enable automatic deployment to Fly.io.
 
