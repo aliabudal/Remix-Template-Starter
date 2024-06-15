@@ -98,6 +98,21 @@ export async function getUserById({ DB }: AppLoadContext, userId: string) {
 	);
 }
 
+export async function getUserByEmail({ DB }: AppLoadContext, email: string) {
+	return (
+		(await DB.query.user.findFirst({
+			columns: {
+				id: true,
+				displayName: true,
+				email: true,
+				fullName: true,
+				role: true,
+			},
+			where: eq(user.email, email),
+		})) ?? null
+	);
+}
+
 export async function getUserByLogin(
 	{ DB }: AppLoadContext,
 	{ email, password: unhashedPassword }: { email: string; password: string }
