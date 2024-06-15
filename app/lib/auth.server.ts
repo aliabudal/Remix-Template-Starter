@@ -41,7 +41,7 @@ export function getAuthenticator(context: AppLoadContext) {
 			{
 				clientID: clientID,
 				clientSecret: clientSecret,
-				callbackURL: "http://localhost:3000/auth/github/callback",
+				callbackURL: "https://remix-template-starter.fly.dev/auth/github/callback",
 			},
 			async ({ profile }) => {
 				const email = profile.emails[0].value;
