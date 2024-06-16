@@ -155,13 +155,14 @@ export const Footer = () => {
 			</section>
 
 			<section className="container pb-14 text-center">
-				<h3>
+				<h3 className="text-lg leading-6">
 					&copy; {currentYear} Remix Template Starter By{" "}
 					<a
 						rel="noreferrer noopener"
 						target="_blank"
 						href="https://github.com/aliabudal"
-						className="border-primary text-primary transition-all hover:border-b-2"
+						className="text-lg text-blue-600 underline hover:text-blue-800"
+						style={{ fontSize: "inherit" }}
 					>
 						Ali Abudal
 					</a>

@@ -41,7 +41,8 @@ export function getAuthenticator(context: AppLoadContext) {
 			{
 				clientID: clientID,
 				clientSecret: clientSecret,
-				callbackURL: "https://remix-template-starter.fly.dev/auth/github/callback",
+				callbackURL:
+					"https://remix-template-starter.fly.dev/auth/github/callback",
 			},
 			async ({ profile }) => {
 				const email = profile.emails[0].value;
@@ -68,7 +69,7 @@ export function getAuthenticator(context: AppLoadContext) {
 						);
 					}
 				}
-				
+
 				return { id: user.id, role: user.role as UserRole };
 			}
 		),
