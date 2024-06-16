@@ -161,7 +161,7 @@ export const Footer = () => {
 						rel="noreferrer noopener"
 						target="_blank"
 						href="https://github.com/aliabudal"
-						className="text-lg text-blue-600 underline hover:text-blue-800"
+						className="hover:border-image hover:border-image-slice bg-gradient-to-b from-blue-500 to-blue-700 bg-clip-text text-lg text-transparent hover:border-b-2 hover:border-b-blue-500"
 						style={{ fontSize: "inherit" }}
 					>
 						Ali Abudal

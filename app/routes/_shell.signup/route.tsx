@@ -1,5 +1,6 @@
 import { getFormProps, getInputProps } from "@conform-to/react";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
+import { FaGithub } from "react-icons/fa";
 import type {
 	ActionFunctionArgs,
 	LoaderFunctionArgs,
@@ -286,6 +287,18 @@ export default function Signup() {
 						</div>
 					</CardFooter>
 				</Card>
+			</Form>
+			<Form
+				action="/auth/github"
+				method="post"
+				className="mx-auto mt-4 w-full max-w-screen-sm"
+			>
+				<Button className="block w-full">
+					<span className="inline-flex items-center">
+						<FaGithub className="mr-2" />
+						Login with GitHub
+					</span>
+				</Button>
 			</Form>
 		</main>
 	);

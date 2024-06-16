@@ -51,7 +51,7 @@ This template can be used as a starting point, and be built on top of on, but ca
 
 A live preview with the project deployed can be viewed [here](https://remix-template-starter.fly.dev/), it might take a while for the website to first load due to the VM sleeping (it only wakes up when someone is accessing the site, and sleeps after 10 minutes of inactivity).
 
-You can either register a new account or log in using the following account:
+You can either register a new account, log in with GitHub or log in using the following account:
 
 Email:
 
@@ -65,7 +65,7 @@ Password:
 test12345
 ```
 
-Take into account that [adding a new product](./app/routes/_shell.add-product/route.tsx), [editing an existing product](./app/routes/_shell.products.edit.$id/route.tsx) and [deleting products](./app/routes/_shell.products.delete.$id/route.tsx) won't work. The APIs are protected by ensuring that only users with the `Administrator` role can modify them. If you enjoy the preview, then refer to the [next section](#getting-started) to get the project up and running on your own machine.
+Take into account that [adding a new product](./app/routes/_shell.add-product/route.tsx), [editing an existing product](./app/routes/_shell.products.edit.$id/route.tsx) and [deleting products](./app/routes/_shell.products.delete.$id/route.tsx) won't work. The APIs are protected by ensuring that only users with the `Administrator` role can modify them. If you enjoy the preview, then refer to the [Getting Started section](#getting-started) to get the project up and running on your own machine.
 
 # Getting Started
 
@@ -114,23 +114,13 @@ yarn install
 
 3. Set up the environment variables
 
-Refer to the [env-example.md](./env-example.md) file for the required environment variables. You need to create a `.env` file in the root directory of your project and add the variables mentioned there with the appropiate values. Make sure to replace the empty quotes with the actual values corresponding to your setup. The project by default uses [Turso](https://turso.tech/) for the database, if you want to use a different provider, you will have to modify the [server](./server.js) and [drizzle.config.ts](./drizzle.config.ts) with your desired config. The project also has [GitHub OAuth 2.0 implemented](./app/lib/auth.server.ts), which is very easy to extend to other providers, refer to this [list](https://github.com/TheRealFlyingCoder/remix-auth-socials).
+Refer to the [env-example.md](./env-example.md) file for the required environment variables. You need to create a `.env` file in the root directory of your project and add the variables mentioned there with the appropiate values. Make sure to replace the empty quotes with the actual values corresponding to your setup. The project by default uses [Turso](https://turso.tech/) for the database, if you want to use a different provider, you will have to modify the [server](./server.js) and [drizzle.config.ts](./drizzle.config.ts) with your desired config. The project also has [GitHub OAuth 2.0 implemented](./app/lib/auth.server.ts), if you do not wish to use it, you don't have to fill in the `clientID` and `clientSecret` in the `.env` file.
 
-4. Build the project
+After setting up the environment variables, you are ready to proceed with either development or production.
 
-Use the following command if you are using npm:
+### Development
 
-```sh
-npm run build
-```
-
-Use the following command if you are using yarn:
-
-```sh
-yarn build
-```
-
-5. Start the server
+For development purposes, you can use the following commands to start the project:
 
 Use the following command if you are using npm:
 
@@ -145,6 +135,38 @@ yarn dev
 ```
 
 Now your project should be up and running, and you can access it in your browser at [localhost:3000](http://localhost:3000).
+
+### Production
+
+When you are ready to deploy your project to a production environment, follow these steps:
+
+Use the following command if you are using npm:
+
+```sh
+npm run build
+```
+
+Use the following command if you are using yarn:
+
+```sh
+yarn build
+```
+
+Then you can run the following commands to run the app in production mode:
+
+Use the following command if you are using npm:
+
+```sh
+npm start
+```
+
+Use the following command if you are using yarn:
+
+```sh
+yarn start
+```
+
+For production deployment, the project also includes a [Dockerfile](./Dockerfile). The Dockerfile provides instructions to build a containerized version of your application.
 
 # Features
 
@@ -170,6 +192,7 @@ The UI components include:
 10. [radio-group.tsx](./app/components/ui/radio-group.tsx): A radio button group component for selecting options
 11. [select.tsx](./app/components/ui/select.tsx): A dropdown select component
 12. [tabs.tsx](./app/components/ui/tabs.tsx): A tab navigation component
+13. [marquee.tsx](./app/components/ui/marquee.tsx): Marquee that will display cards and is infinitely animated
 
 ### Other Components:
 
@@ -188,10 +211,15 @@ These components include:
 9. [plans.tsx](./app/components/plans.tsx): A component for displaying available plans or pricing options
 10. [theme-switcher.tsx](./app/components/theme-switcher.tsx): A component for switching between light and dark themes
 11. [used-by-clients.tsx](./app/components/used-by-clients.tsx): A component showcasing the clients or companies using the application
+12. [sponsors](./app/components/sponsors.tsx): A marquee that is infinitely animated and can show cards containing whatever you want
 
 These components are designed to work together seamlessly, providing a cohesive and functional user interface for your application.
 
-## Protected routes
+# Authentication
+
+The template utilizes [remix-auth](https://github.com/sergiodxa/remix-auth) and [remix-auth-github](https://github.com/sergiodxa/remix-auth-github) for handling authentication. It provides support for both form-based authentication and GitHub OAuth 2.0 authentication. The latter can be extended to any other provider that you want (Google, Twitter, Microsoft OAuth 2.0 etc.), you will simply have to extend the following [file](./app/lib/auth.server.ts), and use the appropiate callback, refer to the following [GitHub repo](https://github.com/TheRealFlyingCoder/remix-auth-socials) for more details. 
+
+# Protected routes
 
 All essential routes are protected using the [\_shell route](./app/routes/_shell/route.tsx), this route acts as a parent route that wraps all the other routes in the application. It ensures that only authenticated users can access the protected routes. It also makes it so that the authentification is handled only 1 time throughout the entire application. The following image represents a representation of the routes:
 
@@ -199,11 +227,11 @@ All essential routes are protected using the [\_shell route](./app/routes/_shell
 
 Ensure that you define the directory inside the [routes/](./app/routes/) using the `_shell` syntax if you wish the route to be protected.
 
-## Nice to have (optional)
+# Nice to have (optional)
 
-This section explains some optional but beneficial features that are included in the template.
+This section explains some optional but beneficial features that are included in the template. You can easily remove them if you do not wish to use them.
 
-### Linting and Formatting
+## Linting and Formatting
 
 The template comes with [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) configured for linting and formatting your code, with the appropiate plugins for them (TailwindCSS, React etc).
 
@@ -221,7 +249,7 @@ npm run lint
 
 View all other commands or modify the existing commands in [package.json](./package.json).
 
-### GitHub Actions Workflow
+## GitHub Actions Workflow
 
 The template includes a GitHub Actions workflow configuration file that automatically checks for linting and formatting errors on pull requests and pushes to the master branch. It also deploys your application to [Fly.io](https://fly.io) when changes are pushed to the master branch.
 
@@ -231,7 +259,7 @@ The workflow consists of two jobs:
 
 2. deploy: Runs only on pushes to the master branch, after the build job has completed successfully. It checks out the code, installs the Flyctl CLI, and deploys the application to Fly.io using the provided FLY_API_TOKEN secret. 
 
-If you want to remove either of those jobs, you can remove the job from the workflow configuration file at `.github/workflows/workflows.yaml`
+If you want to remove either of those jobs, you can remove the job from the workflow configuration file at `.github/workflows/workflows.yaml`.
 
 **Important**: Make sure to set up the [FLY_API_TOKEN](https://fly.io/docs/reference/deploy-tokens/) secret in your GitHub repository's settings to enable automatic deployment to Fly.io.
 
