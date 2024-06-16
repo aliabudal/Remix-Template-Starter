@@ -114,7 +114,7 @@ yarn install
 
 3. Set up the environment variables
 
-Refer to the [env-example.md](./env-example.md) file for the required environment variables. You need to create a `.env` file in the root directory of your project and add the variables mentioned there with the appropiate values. Make sure to replace the empty quotes with the actual values corresponding to your setup. The project by default uses [Turso](https://turso.tech/) for the database, if you want to use a different provider, you will have to modify the [server](./server.js) and [drizzle.config.ts](./drizzle.config.ts) with your desired config.
+Refer to the [env-example.md](./env-example.md) file for the required environment variables. You need to create a `.env` file in the root directory of your project and add the variables mentioned there with the appropiate values. Make sure to replace the empty quotes with the actual values corresponding to your setup. The project by default uses [Turso](https://turso.tech/) for the database, if you want to use a different provider, you will have to modify the [server](./server.js) and [drizzle.config.ts](./drizzle.config.ts) with your desired config. The project also has [GitHub OAuth 2.0 implemented](./app/lib/auth.server.ts), which is very easy to extend to other providers, refer to this [list](https://github.com/TheRealFlyingCoder/remix-auth-socials).
 
 4. Build the project
 
@@ -144,7 +144,7 @@ Use the following command if you are using yarn:
 yarn dev
 ```
 
-Now your project should be up and running, and you can access it in your browser at [localhost:3000](http://localhost:3000)
+Now your project should be up and running, and you can access it in your browser at [localhost:3000](http://localhost:3000).
 
 # Features
 
@@ -152,7 +152,8 @@ The Remix Template Starter comes with a set of pre-built [components](#component
 
 ## Components
 
-UI Components  
+### UI Components:
+
 The [ui/](./app/components/ui/) directory contains a collection of reusable UI components that are taken from either [shadcn/ui](https://ui.shadcn.com/) or [Aceternity UI](https://ui.aceternity.com/). These components provide a consistent and stylish look and feel to your application. Some of the components may have undergone small modifications to fit the specific needs of this template.
 
 The UI components include:
@@ -170,7 +171,8 @@ The UI components include:
 11. [select.tsx](./app/components/ui/select.tsx): A dropdown select component
 12. [tabs.tsx](./app/components/ui/tabs.tsx): A tab navigation component
 
-Other Components:  
+### Other Components:
+
 The components located outside the ui/ directory are built using the logic and styling from the UI components, along with additional functionality and design specific to their purpose.
 
 These components include:
