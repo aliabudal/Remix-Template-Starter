@@ -1,11 +1,9 @@
-// import { getUser } from "@/lib/auth.server";
-// import { redirect } from "@remix-run/node";
-// import type { LoaderFunctionArgs } from "@remix-run/node";
 import { Faq } from "@/components/faq";
 import { AvailablePlans } from "@/components/plans";
 import { HowItWorks } from "@/components/how-it-works";
 import { UsedByClients } from "@/components/used-by-clients";
 import { HeroSection } from "@/components/hero-section/hero-section";
+import { Sponsors } from "@/components/sponsors";
 
 export default function Home() {
 	return (
@@ -13,6 +11,7 @@ export default function Home() {
 			<HeroSection />
 			<HowItWorks />
 			<UsedByClients />
+			<Sponsors />
 			<AvailablePlans />
 			<Faq />
 		</>
