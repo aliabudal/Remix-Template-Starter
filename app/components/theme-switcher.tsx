@@ -75,7 +75,9 @@ export function toggleTheme() {
 export function setTheme(theme: Theme | string) {
 	let themeToSet: Theme | null = validateTheme(theme);
 	if (themeToSet === "system") {
-		themeToSet = null;
+		themeToSet = window.matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light";
 	}
 	if (themeToSet) {
 		localStorage.setItem("theme", themeToSet);

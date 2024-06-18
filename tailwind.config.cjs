@@ -83,6 +83,14 @@ module.exports = {
 					"40%": { transform: "translateX(0) scaleX(0.4)" },
 					"100%": { transform: "translateX(100%) scaleX(0.5)" },
 				},
+				"background-shine": {
+					from: {
+						backgroundPosition: "0 0",
+					},
+					to: {
+						backgroundPosition: "-200% 0",
+					},
+				},
 			},
 			animation: {
 				marquee: "marquee var(--duration) linear infinite",
@@ -90,6 +98,7 @@ module.exports = {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 				progress: "progress 1s infinite linear",
+				"background-shine": "background-shine 2s linear infinite",
 			},
 			transformOrigin: {
 				"left-right": "0% 50%",

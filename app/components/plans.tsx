@@ -65,10 +65,15 @@ const PricingCard = ({
 	features,
 	actionLabel,
 	popular,
+	exclusive,
 }: PricingCardProps) => (
 	<Card
 		className={cn(
-			`flex w-72 flex-col justify-between py-1 ${popular ? "border-rose-400" : "border-zinc-700"} mx-auto sm:mx-0`
+			`flex w-72 flex-col justify-between py-1 ${popular ? "border-rose-400" : "border-zinc-700"} mx-auto sm:mx-0`,
+			{
+				"animate-background-shine bg-white bg-[length:200%_100%] transition-colors dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)]":
+					exclusive,
+			}
 		)}
 	>
 		<div>
@@ -76,17 +81,6 @@ const PricingCard = ({
 				{isYearly && yearlyPrice && monthlyPrice ? (
 					<div className="flex justify-between">
 						<CardTitle className="text-lg">{title}</CardTitle>
-						{/* <div
-							className={cn(
-								"h-fit rounded-xl bg-zinc-200 px-2.5 py-1 text-sm text-black dark:bg-zinc-800 dark:text-white",
-								{
-									"bg-gradient-to-r from-orange-400 to-rose-400 dark:text-black ":
-										popular,
-								}
-							)}
-						>
-							Save ${monthlyPrice * 12 - yearlyPrice}
-						</div> */}
 					</div>
 				) : (
 					<CardTitle className="text-lg">{title}</CardTitle>

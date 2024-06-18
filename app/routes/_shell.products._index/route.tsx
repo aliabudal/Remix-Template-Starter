@@ -123,7 +123,7 @@ export default function ProductsPage() {
 					<div key={product.id} className={themeBorder()}>
 						<div className="relative">
 							<img
-								src="https://i.insider.com/60817ec5354dde0018c06960?width=700"
+								src="https://image-placeholder.com/images/actual-size/480x320.png"
 								alt={`Placeholder for ${product.name}`}
 								className="h-48 w-full object-cover"
 							/>

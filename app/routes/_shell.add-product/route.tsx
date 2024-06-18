@@ -97,7 +97,7 @@ export default function AddProductPage() {
 							{actionData &&
 								"errors" in actionData &&
 								actionData.errors?.name && (
-									<div className="text-sm text-destructive">
+									<div className="text-sm text-red-500">
 										{actionData.errors.name.join(", ")}
 									</div>
 								)}
@@ -114,7 +114,7 @@ export default function AddProductPage() {
 							{actionData &&
 								"errors" in actionData &&
 								actionData.errors?.description && (
-									<div className="text-sm text-destructive">
+									<div className="text-sm text-red-500">
 										{actionData.errors.description.join(
 											", "
 										)}
@@ -134,7 +134,7 @@ export default function AddProductPage() {
 							{actionData &&
 								"errors" in actionData &&
 								actionData.errors?.price && (
-									<div className="text-sm text-destructive">
+									<div className="t text-sm text-red-500">
 										{actionData.errors.price.join(", ")}
 									</div>
 								)}
@@ -150,7 +150,7 @@ export default function AddProductPage() {
 				</Card>
 			</Form>
 			{actionData && "error" in actionData && (
-				<p className="mt-4 text-center text-sm text-destructive">
+				<p className="mt-4 text-center text-sm text-destructive text-red-500">
 					{actionData.error}
 				</p>
 			)}

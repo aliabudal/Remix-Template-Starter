@@ -64,7 +64,7 @@ export default function DeleteProductConfirmation() {
 				</p>
 				<div className={themeBorder("mb-6", "p-4")}>
 					<img
-						src="https://i.insider.com/60817ec5354dde0018c06960?width=700"
+						src="https://image-placeholder.com/images/actual-size/480x320.png"
 						alt={`Placeholder for ${product.name}`}
 						className="h-48 w-full object-cover"
 					/>

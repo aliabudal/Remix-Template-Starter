@@ -9,6 +9,7 @@ import {
 } from "@radix-ui/react-icons";
 import { Form, Link } from "@remix-run/react";
 import * as React from "react";
+import { useEffect } from "react";
 import { useHydrated } from "remix-utils/use-hydrated";
 
 import {
@@ -37,6 +38,10 @@ export function Header({
 		rerender({});
 	}, []);
 	const theme = getTheme();
+	useEffect(() => {
+		setSystemTheme(theme);
+		rerender({});
+	}, [theme]);
 
 	return (
 		<>
